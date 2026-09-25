@@ -1,0 +1,37 @@
+# ==========================================
+# SWI-Prolog
+# ==========================================
+
+# Arquivos compilados (Quick Load Files)
+*.qlf
+
+# Arquivos de log e depuracao
+*.log
+*.trace
+
+# Arquivos temporarios e backups
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+*.orig
+
+# ==========================================
+# Sistema operacional
+# ==========================================
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux e macOS
+.DS_Store
+
+# ==========================================
+# Arquivos locais de editores
+# ==========================================
+
+.vscode/
+.idea/
