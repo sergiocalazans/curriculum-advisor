@@ -31,3 +31,14 @@ disciplina(matematica_discreta, obrigatoria, 4, 3).
 disciplina(programacao_orientada_objetos, obrigatoria, 4, 3).
 
 % 4° Período
+
+discplina(algebra_linear, obrigatoria, 4, 4).
+disciplina(arquitetura_banco_dados, obrigatoria, 4, 4).
+disciplina(computacao_sociedade, obrigatoria, 2, 4).
+disciplina(etica, obrigatoria, 2, 4).
+disciplina(modelagem_sistemas_computacionas, obrigatoria, 4, 4).
+disciplina(programacao_logica, obrigatoria, 4, 4).
+disciplina(teoria_grafos, obrigatoria, 4, 4).
+disciplina(topicos_avancados_arquitetura_computadores, obrigatoria, 4, 4).
+
+% 5° Período
