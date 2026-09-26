@@ -52,3 +52,14 @@ disciplina(sistemas_operacionais, obrigatoria, 4, 5).
 disciplina(eletiva_I, eletiva, 4, 5).
 
 % 6° Período
+
+disciplina(direito_legislacao, obrigatoria, 2, 6).
+disciplina(engenharia_software_II, obrigatoria, 4, 6).
+disciplina(inteligencia_computacional, obrigatoria, 4, 6).
+disciplina(redes_computadores_II, obrigatoria, 4, 6).
+disciplina(processamento_imagens, obrigatoria, 4, 6).
+disciplina(seminarios_informatica, obrigatoria, 2, 6).
+disciplina(sistemas_concorrentes, obrigatoria, 4, 6).
+disciplina(eletiva_II, eletiva, 4, 6).
+
+% 7° Período
