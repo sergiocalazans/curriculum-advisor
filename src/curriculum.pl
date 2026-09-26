@@ -22,3 +22,12 @@ disciplina(sistemas_digitais, obrigatoria, 4, 2).
 
 % 3° Período
 
+disciplina(arquitetura_organizacao_computadores, obrigatoria, 4, 3).
+disciplina(estruturas_dados, obrigatoria, 4, 3).
+disciplina(filosofia, obrigatoria, 4, 3).
+disciplina(geometria_analitica, obrigatoria, 4, 3).
+disciplina(matematica_computacional, obrigatoria, 4, 3).
+disciplina(matematica_discreta, obrigatoria, 4, 3).
+disciplina(programacao_orientada_objetos, obrigatoria, 4, 3).
+
+% 4° Período
