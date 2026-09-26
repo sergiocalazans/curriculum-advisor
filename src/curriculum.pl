@@ -42,3 +42,13 @@ disciplina(teoria_grafos, obrigatoria, 4, 4).
 disciplina(topicos_avancados_arquitetura_computadores, obrigatoria, 4, 4).
 
 % 5° Período
+
+disciplina(engenharia_software_I, obrigatoria, 4, 5).
+disciplina(estatisca, obrigatoria, 4, 5).
+disciplina(inteligencia_artificial, obrigatoria, 4, 5).
+disciplina(programacao_funcinal, obrigatoria, 4, 5).
+disciplina(redes_computadores_I, obrigatoria, 4, 5).
+disciplina(sistemas_operacionais, obrigatoria, 4, 5).
+disciplina(eletiva_I, eletiva, 4, 5).
+
+% 6° Período
