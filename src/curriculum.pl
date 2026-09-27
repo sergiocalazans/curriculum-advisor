@@ -1,5 +1,7 @@
 
-% disciplina(Nome, Tipo, Creditos, Semestre).
+% DISCIPLINAS DO CURRÍCULO DE CIÊNCIA DA COMPUTAÇÃO
+
+% Estrutura: disciplina(Nome, Tipo, Creditos, Semestre).
 
 % 1° Período
 disciplina(algoritmos_programacao, obrigatoria, 4, 1).
@@ -32,7 +34,7 @@ disciplina(programacao_orientada_objetos, obrigatoria, 4, 3).
 
 % 4° Período
 
-discplina(algebra_linear, obrigatoria, 4, 4).
+disciplina(algebra_linear, obrigatoria, 4, 4).
 disciplina(arquitetura_banco_dados, obrigatoria, 4, 4).
 disciplina(computacao_sociedade, obrigatoria, 2, 4).
 disciplina(etica, obrigatoria, 2, 4).
@@ -75,4 +77,13 @@ disciplina(sistemas_distribuidos, obrigatoria, 4, 7).
 disciplina(atividades_complementares, obrigatoria, 0, 7).
 
 % 8° Período
-
+disciplina(arquitetura_sistemas_distribuidos, obrigatoria, 4, 8).
+disciplina(computacao_grafica, obrigatoria, 4, 8).
+disciplina(economia_administracao, obrigatoria, 2, 8).
+disciplina(empreendedorismo_inovacao_computacao, obrigatoria, 2, 8).
+disciplina(gestao_projetos_tecnologia_informacao, obrigatoria, 4, 8).
+disciplina(projeto_final_II, obrigatoria, 2, 8).
+disciplina(seguranca_auditoria_sistemas, obrigatoria, 4, 8).
+disciplina(eletiva_IV, eletiva, 4, 8).
+disciplina(atividades_complementares, obrigatoria, 0, 8).
+disciplina(leitura_escrita_textos_tecnicos_cientificos, obrigatoria, 4, 8).
