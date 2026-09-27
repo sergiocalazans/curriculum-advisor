@@ -63,3 +63,16 @@ disciplina(sistemas_concorrentes, obrigatoria, 4, 6).
 disciplina(eletiva_II, eletiva, 4, 6).
 
 % 7° Período
+
+disciplina(avaliacao_desempenho_sistemas, obrigatoria, 4, 7).
+disciplina(complexidade_algoritmos, obrigatoria, 4, 7).
+disciplina(interacao_humano_computador, obrigatoria, 4, 7).
+disciplina(linguagens_formais_compiladores, obrigatoria, 4, 7).
+disciplina(projeto_comunitario, obrigatoria, 2, 7).
+disciplina(projeto_final_I, obrigatoria, 2, 7).
+disciplina(eletiva_III, eletiva, 2, 7).
+disciplina(sistemas_distribuidos, obrigatoria, 4, 7).
+disciplina(atividades_complementares, obrigatoria, 0, 7).
+
+% 8° Período
+
