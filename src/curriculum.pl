@@ -91,21 +91,31 @@ disciplina(leitura_escrita_textos_tecnicos_cientificos, obrigatoria, 4, 8).
 
 % PRE-REQUISITOS
 % prerequisito(Disciplina, PreRequisito).
-prerequisito(estruturas_dados, algoritmos_programacao).
-prerequisito(teoria_grafos, estruturas_dados).
+
+% Profundidade 5
 prerequisito(complexidade_algoritmos, teoria_grafos).
-
-% Cadeia 2 (profundidade 4)
-prerequisito(arquitetura_organizacao_computadores, sistemas_digitais).
-prerequisito(sistemas_operacionais, arquitetura_organizacao_computadores).
-prerequisito(sistemas_concorrentes, sistemas_operacionais).
-prerequisito(sistemas_distribuidos, sistemas_concorrentes).
-
-% Cadeia 3 (profundidade 3)
+prerequisito(teoria_grafos, estruturas_dados).
+prerequisito(estruturas_dados, programacao_orientada_objetos).
 prerequisito(programacao_orientada_objetos, programacao_imperativa).
-prerequisito(engenharia_software_I, programacao_orientada_objetos).
-prerequisito(engenharia_software_II, engenharia_software_I).
+prerequisito(programacao_imperativa, algoritmos_programacao).
 
+% Profundidade 6
+prerequisito(arquitetura_sistemas_distribuidos, sistemas_distribuidos).
+prerequisito(sistemas_distribuidos, sistemas_concorrentes).
+prerequisito(sistemas_concorrentes, sistemas_operacionais).
+prerequisito(sistemas_operacionais, arquitetura_organizacao_computadores).
+prerequisito(arquitetura_organizacao_computadores, sistemas_digitais).
+prerequisito(sistemas_digitais, fundamentos_eletricidade_optica).
+
+% Profundidade 3
+prerequisito(projeto_final_II, projeto_final_I).
+prerequisito(projeto_final_I, engenharia_software_I).
+prerequisito(engenharia_software_I, modelagem_sistemas_computacionas).
+
+% Profundidade 3
+prerequisito(processamento_imagens, estatisca).
+prerequisito(estatisca, calculo_I).
+prerequisito(calculo_I, introducao_calculo).
 
 
 % HISTÓRICO DE MATÉRIAS CURSADAS. ESTRUTURA:  cursou(Aluno, Disciplina) 
