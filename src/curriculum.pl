@@ -89,23 +89,26 @@ disciplina(atividades_complementares, obrigatoria, 0, 8).
 disciplina(leitura_escrita_textos_tecnicos_cientificos, obrigatoria, 4, 8).
 
 
+% PRE-REQUISITOS
+% prerequisito(Disciplina, PreRequisito).
+prerequisito(estruturas_dados, algoritmos_programacao).
+prerequisito(teoria_grafos, estruturas_dados).
+prerequisito(complexidade_algoritmos, teoria_grafos).
 
+% Cadeia 2 (profundidade 4)
+prerequisito(arquitetura_organizacao_computadores, sistemas_digitais).
+prerequisito(sistemas_operacionais, arquitetura_organizacao_computadores).
+prerequisito(sistemas_concorrentes, sistemas_operacionais).
+prerequisito(sistemas_distribuidos, sistemas_concorrentes).
 
-
-
-
-
-
-
-
-
-
+% Cadeia 3 (profundidade 3)
+prerequisito(programacao_orientada_objetos, programacao_imperativa).
+prerequisito(engenharia_software_I, programacao_orientada_objetos).
+prerequisito(engenharia_software_II, engenharia_software_I).
 
 
 
 % HISTÓRICO DE MATÉRIAS CURSADAS. ESTRUTURA:  cursou(Aluno, Disciplina) 
-
-
 % ANA: adiantada
 cursou(ana, algoritmos_programacao).
 cursou(ana, banco_dados).
