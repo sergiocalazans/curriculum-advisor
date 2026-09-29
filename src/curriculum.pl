@@ -87,3 +87,140 @@ disciplina(seguranca_auditoria_sistemas, obrigatoria, 4, 8).
 disciplina(eletiva_IV, eletiva, 4, 8).
 disciplina(atividades_complementares, obrigatoria, 0, 8).
 disciplina(leitura_escrita_textos_tecnicos_cientificos, obrigatoria, 4, 8).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% HISTÓRICO DE MATÉRIAS CURSADAS. ESTRUTURA:  cursou(Aluno, Disciplina) 
+
+
+% ANA: adiantada
+cursou(ana, algoritmos_programacao).
+cursou(ana, banco_dados).
+cursou(ana, fundamentos_eletricidade_optica).
+cursou(ana, introducao_computacao).
+cursou(ana, introducao_calculo).
+cursou(ana, leitura_producao_textos_academicos).
+cursou(ana, sistemas_multimidia).
+cursou(ana, calculo_I).
+cursou(ana, cultura_religiosa).
+cursou(ana, fundamentos_fisica_computacao).
+cursou(ana, logica_matematica).
+cursou(ana, metodologia_cientifica).
+cursou(ana, programacao_imperativa).
+cursou(ana, sistemas_digitais).
+cursou(ana, arquitetura_organizacao_computadores).
+cursou(ana, estruturas_dados).
+cursou(ana, filosofia).
+cursou(ana, geometria_analitica).
+cursou(ana, matematica_computacional).
+cursou(ana, matematica_discreta).
+cursou(ana, programacao_orientada_objetos).
+cursou(ana, algebra_linear).
+cursou(ana, arquitetura_banco_dados).
+cursou(ana, computacao_sociedade).
+cursou(ana, etica).
+cursou(ana, modelagem_sistemas_computacionas).
+cursou(ana, programacao_logica).
+cursou(ana, teoria_grafos).
+cursou(ana, topicos_avancados_arquitetura_computadores).
+cursou(ana, engenharia_software_I).
+cursou(ana, estatisca).
+cursou(ana, inteligencia_artificial).
+cursou(ana, programacao_funcinal).
+cursou(ana, redes_computadores_I).
+cursou(ana, sistemas_operacionais).
+cursou(ana, eletiva_I).
+cursou(ana, direito_legislacao).
+cursou(ana, engenharia_software_II).
+cursou(ana, inteligencia_computacional).
+cursou(ana, redes_computadores_II).
+cursou(ana, processamento_imagens).
+cursou(ana, seminarios_informatica).
+cursou(ana, sistemas_concorrentes).
+cursou(ana, avaliacao_desempenho_sistemas).
+cursou(ana, complexidade_algoritmos).
+cursou(ana, interacao_humano_computador).
+
+% BRUNO: regular
+cursou(bruno, algoritmos_programacao).
+cursou(bruno, banco_dados).
+cursou(bruno, fundamentos_eletricidade_optica).
+cursou(bruno, introducao_computacao).
+cursou(bruno, introducao_calculo).
+cursou(bruno, leitura_producao_textos_academicos).
+cursou(bruno, sistemas_multimidia).
+cursou(bruno, calculo_I).
+cursou(bruno, cultura_religiosa).
+cursou(bruno, fundamentos_fisica_computacao).
+cursou(bruno, logica_matematica).
+cursou(bruno, metodologia_cientifica).
+cursou(bruno, programacao_imperativa).
+cursou(bruno, sistemas_digitais).
+cursou(bruno, arquitetura_organizacao_computadores).
+cursou(bruno, estruturas_dados).
+cursou(bruno, filosofia).
+cursou(bruno, geometria_analitica).
+cursou(bruno, matematica_computacional).
+cursou(bruno, matematica_discreta).
+cursou(bruno, programacao_orientada_objetos).
+cursou(bruno, algebra_linear).
+cursou(bruno, arquitetura_banco_dados).
+cursou(bruno, computacao_sociedade).
+cursou(bruno, etica).
+cursou(bruno, modelagem_sistemas_computacionas).
+cursou(bruno, programacao_logica).
+cursou(bruno, teoria_grafos).
+cursou(bruno, topicos_avancados_arquitetura_computadores).
+cursou(bruno, engenharia_software_I).
+cursou(bruno, estatisca).
+cursou(bruno, inteligencia_artificial).
+cursou(bruno, programacao_funcinal).
+cursou(bruno, redes_computadores_I).
+cursou(bruno, sistemas_operacionais).
+cursou(bruno, eletiva_I).
+
+% CARLA: atrasada, com trancamento
+cursou(carla, algoritmos_programacao).
+cursou(carla, banco_dados).
+cursou(carla, fundamentos_eletricidade_optica).
+cursou(carla, introducao_computacao).
+cursou(carla, introducao_calculo).
+cursou(carla, leitura_producao_textos_academicos).
+cursou(carla, sistemas_multimidia).
+cursou(carla, calculo_I).
+cursou(carla, cultura_religiosa).
+cursou(carla, fundamentos_fisica_computacao).
+cursou(carla, logica_matematica).
+cursou(carla, metodologia_cientifica).
+cursou(carla, programacao_imperativa).
+cursou(carla, sistemas_digitais).
+cursou(carla, arquitetura_organizacao_computadores).
+cursou(carla, estruturas_dados).
+cursou(carla, filosofia).
+cursou(carla, geometria_analitica).
+cursou(carla, matematica_computacional).
+cursou(carla, matematica_discreta).
+cursou(carla, programacao_orientada_objetos).
+cursou(carla, algebra_linear).
+cursou(carla, computacao_sociedade).
+cursou(carla, etica).
+cursou(carla, programacao_logica).
+
+
+
+
+
+

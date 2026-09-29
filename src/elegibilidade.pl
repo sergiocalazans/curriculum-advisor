@@ -23,3 +23,4 @@ disciplinas_pendentes(Aluno, Lista) :-
         Disciplinas
     ),
     sort(Disciplinas, Lista).
+
