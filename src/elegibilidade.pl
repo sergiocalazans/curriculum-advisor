@@ -30,6 +30,7 @@ disciplinas_pendentes(Aluno, Lista) :-
 %   1. ela existe na grade curricular, e
 %   2. não há registro de que o aluno já a cursou (negação por falha).
 
+
 pode_cursar(Aluno, Disciplina) :-
     disciplina(Disciplina, _, _, _),   % a disciplina está na grade
     \+ cursou(Aluno, Disciplina).      % e o aluno ainda não cursou
