@@ -1,4 +1,3 @@
-
 % DISCIPLINAS DO CURRÍCULO DE CIÊNCIA DA COMPUTAÇÃO
 
 % Estrutura: disciplina(Nome, Tipo, Creditos, Semestre).
@@ -13,7 +12,6 @@ disciplina(leitura_producao_textos_academicos, obrigatoria, 4, 1).
 disciplina(sistemas_multimidia, obrigatoria, 4, 1).
 
 % 2° Período
-
 disciplina(calculo_I, obrigatoria, 6, 2).
 disciplina(cultura_religiosa, obrigatoria, 2, 2).
 disciplina(fundamentos_fisica_computacao, obrigatoria, 4, 2).
@@ -23,7 +21,6 @@ disciplina(programacao_imperativa, obrigatoria, 6, 2).
 disciplina(sistemas_digitais, obrigatoria, 4, 2).
 
 % 3° Período
-
 disciplina(arquitetura_organizacao_computadores, obrigatoria, 4, 3).
 disciplina(estruturas_dados, obrigatoria, 4, 3).
 disciplina(filosofia, obrigatoria, 4, 3).
@@ -33,7 +30,6 @@ disciplina(matematica_discreta, obrigatoria, 4, 3).
 disciplina(programacao_orientada_objetos, obrigatoria, 4, 3).
 
 % 4° Período
-
 disciplina(algebra_linear, obrigatoria, 4, 4).
 disciplina(arquitetura_banco_dados, obrigatoria, 4, 4).
 disciplina(computacao_sociedade, obrigatoria, 2, 4).
@@ -44,7 +40,6 @@ disciplina(teoria_grafos, obrigatoria, 4, 4).
 disciplina(topicos_avancados_arquitetura_computadores, obrigatoria, 4, 4).
 
 % 5° Período
-
 disciplina(engenharia_software_I, obrigatoria, 4, 5).
 disciplina(estatisca, obrigatoria, 4, 5).
 disciplina(inteligencia_artificial, obrigatoria, 4, 5).
@@ -54,7 +49,6 @@ disciplina(sistemas_operacionais, obrigatoria, 4, 5).
 disciplina(eletiva_I, eletiva, 4, 5).
 
 % 6° Período
-
 disciplina(direito_legislacao, obrigatoria, 2, 6).
 disciplina(engenharia_software_II, obrigatoria, 4, 6).
 disciplina(inteligencia_computacional, obrigatoria, 4, 6).
@@ -65,7 +59,6 @@ disciplina(sistemas_concorrentes, obrigatoria, 4, 6).
 disciplina(eletiva_II, eletiva, 4, 6).
 
 % 7° Período
-
 disciplina(avaliacao_desempenho_sistemas, obrigatoria, 4, 7).
 disciplina(complexidade_algoritmos, obrigatoria, 4, 7).
 disciplina(interacao_humano_computador, obrigatoria, 4, 7).
@@ -74,7 +67,7 @@ disciplina(projeto_comunitario, obrigatoria, 2, 7).
 disciplina(projeto_final_I, obrigatoria, 2, 7).
 disciplina(eletiva_III, eletiva, 2, 7).
 disciplina(sistemas_distribuidos, obrigatoria, 4, 7).
-disciplina(atividades_complementares, obrigatoria, 0, 7).
+disciplina(atividades_complementares_I, obrigatoria, 0, 7).
 
 % 8° Período
 disciplina(arquitetura_sistemas_distribuidos, obrigatoria, 4, 8).
@@ -85,7 +78,7 @@ disciplina(gestao_projetos_tecnologia_informacao, obrigatoria, 4, 8).
 disciplina(projeto_final_II, obrigatoria, 2, 8).
 disciplina(seguranca_auditoria_sistemas, obrigatoria, 4, 8).
 disciplina(eletiva_IV, eletiva, 4, 8).
-disciplina(atividades_complementares, obrigatoria, 0, 8).
+disciplina(atividades_complementares_II, obrigatoria, 0, 8).
 disciplina(leitura_escrita_textos_tecnicos_cientificos, obrigatoria, 4, 8).
 
 
@@ -107,9 +100,10 @@ prerequisito(sistemas_operacionais, arquitetura_organizacao_computadores).
 prerequisito(arquitetura_organizacao_computadores, sistemas_digitais).
 prerequisito(sistemas_digitais, fundamentos_eletricidade_optica).
 
-% Profundidade 3
+% Profundidade 4
 prerequisito(projeto_final_II, projeto_final_I).
-prerequisito(projeto_final_I, engenharia_software_I).
+prerequisito(projeto_final_I, engenharia_software_II).
+prerequisito(engenharia_software_II, engenharia_software_I).
 prerequisito(engenharia_software_I, modelagem_sistemas_computacionas).
 
 % Profundidade 3
@@ -117,6 +111,12 @@ prerequisito(processamento_imagens, estatisca).
 prerequisito(estatisca, calculo_I).
 prerequisito(calculo_I, introducao_calculo).
 
+% BANCO DE ALUNOS
+% aluno(Nome, Semestre_atual, Status).
+aluno(carla, 5, regular).
+aluno(bruno, 6, regular).
+aluno(ana, 6, regular).
+aluno(uriel, 3, trancado). % sem historirco, para testes
 
 % HISTÓRICO DE MATÉRIAS CURSADAS. ESTRUTURA:  cursou(Aluno, Disciplina) 
 % ANA: adiantada
@@ -205,7 +205,7 @@ cursou(bruno, redes_computadores_I).
 cursou(bruno, sistemas_operacionais).
 cursou(bruno, eletiva_I).
 
-% CARLA: atrasada, com trancamento
+% CARLA: atrasada
 cursou(carla, algoritmos_programacao).
 cursou(carla, banco_dados).
 cursou(carla, fundamentos_eletricidade_optica).
@@ -231,9 +231,3 @@ cursou(carla, algebra_linear).
 cursou(carla, computacao_sociedade).
 cursou(carla, etica).
 cursou(carla, programacao_logica).
-
-
-
-
-
-

@@ -72,7 +72,7 @@ test(disciplina_cursada_nao_pendente) :-
 % arquitetura de banco de dados pendente.
 test(pendente_carla) :-
     disciplinas_pendentes(carla, Lista),
-    member(arquitetura_banco_dados, Lista).
+    memberchk(arquitetura_banco_dados, Lista).
 
 % Verifica se disciplinas liberadas
 % nao incluem disciplinas ja cursadas.
@@ -94,5 +94,23 @@ test(retorno_listas) :-
     disciplinas_pendentes(ana, Pendentes),
     is_list(Liberadas),
     is_list(Pendentes).
+
+% Verifica a situacao de cada aluno de teste.
+test(situacao_ana) :-
+    situacao_aluno(ana, adiantado).
+
+test(situacao_bruno) :-
+    situacao_aluno(bruno, no_ritmo).
+
+test(situacao_carla) :-
+    situacao_aluno(carla, atrasado).
+
+% Verifica que uma situacao errada falha.
+test(situacao_incorreta, [fail]) :-
+    situacao_aluno(ana, no_ritmo).
+
+% Verifica que aluno inexistente falha de forma limpa.
+test(situacao_aluno_inexistente, [fail]) :-
+    situacao_aluno(fulano_inexistente, _).
 
 :- end_tests(elegibilidade).
