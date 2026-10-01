@@ -156,6 +156,9 @@ Para os alunos da base completa, prefira `trilhas_limitadas/4`. Embora haja limi
 
 O código atende às três camadas e possui demonstração, testes de ciclo separados, tratamento de consultas inexistentes e documentação de decisões.
 
-Antes de entregar, execute os dois comandos principais no computador do grupo: demonstração e testes. A validação desta revisão foi feita em Windows com SWI-Prolog 10.0.2.
+## Grupo - 2girls 2boys
 
-Todos os integrantes devem conseguir explicar o código. O modelo curricular parte da base enviada pelo grupo; as relações são didáticas e não representam uma validação oficial da matriz ou das normas de matrícula da instituição.
+- [Glaucia Araujo](https://github.com/Glaucia05)
+- [Gustavo Mizuguti](https://github.com/GMizuguti)
+- [Nicolly Cordeiro](https://github.com/ly-ubimyy)
+- [Sergio Calazans](https://github.com/sergiocalazans)
