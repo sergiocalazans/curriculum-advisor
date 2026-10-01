@@ -1,7 +1,10 @@
+% Ponto de entrada: carrega as três camadas e oferece a demonstração demo/0.
 :- ensure_loaded('curriculum.pl').
 :- ensure_loaded('elegibilidade.pl').
 :- ensure_loaded('trilhas.pl').
 
+% Demonstra fatos, elegibilidade, dependências e planos de conclusão.
+% Diego exemplifica a trilha do zero; Ana permite coletar três alternativas.
 demo :-
     writeln('=== CAMADA 1: base curricular ==='),
     findall(D, disciplina(D, _, _, 1), PrimeiroSemestre), writeln(PrimeiroSemestre),
@@ -18,6 +21,7 @@ demo :-
     trilhas_limitadas(ana, 28, 3, Trilhas), length(Trilhas, Total),
     format('Amostra de ~d trilhas diferentes para Ana:~n', [Total]), writeln(Trilhas).
 
+% Exibe cada semestre com número e créditos; a lista vazia encerra a impressão.
 mostrar_trilha([], _).
 mostrar_trilha([Disciplinas|Trilha], Numero) :-
     creditos_disciplinas(Disciplinas, Creditos), format('Semestre ~d (~d creditos): ~w~n', [Numero, Creditos, Disciplinas]),
