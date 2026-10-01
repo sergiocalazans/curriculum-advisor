@@ -1,13 +1,17 @@
-% Fixture isolada: obrigatoria pendente depende de uma eletiva.
+% Bateria isolada: uma obrigatória pendente depende de uma eletiva não concluída.
+% Os fatos adicionais são estáticos e devem ser carregados em processo separado.
 :- use_module(library(plunit)).
 :- ensure_loaded('../src/main.pl').
 :- multifile disciplina/4, prerequisito/2, aluno/3, cursou/2.
 
+% Duas disciplinas novas permitem testar a inclusão de uma eletiva necessária.
 disciplina(eletiva_dependencia_teste, eletiva, 2, 1).
 disciplina(obrigatoria_dependencia_teste, obrigatoria, 2, 2).
 prerequisito(obrigatoria_dependencia_teste, eletiva_dependencia_teste).
 aluno(eletiva_teste, 8, regular).
 
+% O aluno concluiu as 59 obrigatórias da base normal; só a nova está pendente.
+% As eletivas originais não são necessárias para concluir essa obrigatória.
 cursou(eletiva_teste, algoritmos_programacao).
 cursou(eletiva_teste, banco_dados).
 cursou(eletiva_teste, fundamentos_eletricidade_optica).
@@ -68,6 +72,8 @@ cursou(eletiva_teste, seguranca_auditoria_sistemas).
 cursou(eletiva_teste, atividades_complementares_II).
 cursou(eletiva_teste, leitura_escrita_textos_tecnicos_cientificos).
 
+% A eletiva deve vir antes da dependente, mesmo que ambas caibam nos créditos.
+% Uma trilha incompleta ou com apenas um semestre deve ser rejeitada.
 :- begin_tests(eletiva).
 test(inclui_eletiva_necessaria, true(T == [[eletiva_dependencia_teste],[obrigatoria_dependencia_teste]])) :-
     once(trilha_valida(eletiva_teste, 4, T)).
