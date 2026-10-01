@@ -1,11 +1,14 @@
-% Camada 1: somente fatos; multifile permite fixtures estaticas em arquivos de teste separados.
+% Camada 1: base de conhecimentos do modelo didático, sem regras de domínio.
+% multifile permite acrescentar fatos estáticos nos arquivos de teste isolados.
 :- multifile disciplina/4, prerequisito/2, aluno/3, cursou/2.
 
-% DISCIPLINAS DO CURRÍCULO DE CIÊNCIA DA COMPUTAÇÃO
+% Disciplinas do currículo de Ciência da Computação.
 
-% Estrutura: disciplina(Nome, Tipo, Creditos, Semestre).
+% disciplina(Identificador, Tipo, Creditos, SemestreSugerido).
+% Tipo é obrigatoria ou eletiva; o semestre sugerido não restringe a matrícula.
+% As atividades complementares são componentes obrigatórios de zero crédito.
 
-% 1° Período
+% 1º período sugerido.
 disciplina(algoritmos_programacao, obrigatoria, 4, 1).
 disciplina(banco_dados, obrigatoria, 4, 1).
 disciplina(fundamentos_eletricidade_optica, obrigatoria, 4, 1).
@@ -14,7 +17,7 @@ disciplina(introducao_calculo, obrigatoria, 4, 1).
 disciplina(leitura_producao_textos_academicos, obrigatoria, 4, 1).
 disciplina(sistemas_multimidia, obrigatoria, 4, 1).
 
-% 2° Período
+% 2º período sugerido.
 disciplina(calculo_I, obrigatoria, 6, 2).
 disciplina(cultura_religiosa, obrigatoria, 2, 2).
 disciplina(fundamentos_fisica_computacao, obrigatoria, 4, 2).
@@ -23,7 +26,7 @@ disciplina(metodologia_cientifica, obrigatoria, 2, 2).
 disciplina(programacao_imperativa, obrigatoria, 6, 2).
 disciplina(sistemas_digitais, obrigatoria, 4, 2).
 
-% 3° Período
+% 3º período sugerido.
 disciplina(arquitetura_organizacao_computadores, obrigatoria, 4, 3).
 disciplina(estruturas_dados, obrigatoria, 4, 3).
 disciplina(filosofia, obrigatoria, 4, 3).
@@ -32,7 +35,7 @@ disciplina(matematica_computacional, obrigatoria, 4, 3).
 disciplina(matematica_discreta, obrigatoria, 4, 3).
 disciplina(programacao_orientada_objetos, obrigatoria, 4, 3).
 
-% 4° Período
+% 4º período sugerido.
 disciplina(algebra_linear, obrigatoria, 4, 4).
 disciplina(arquitetura_banco_dados, obrigatoria, 4, 4).
 disciplina(computacao_sociedade, obrigatoria, 2, 4).
@@ -42,7 +45,7 @@ disciplina(programacao_logica, obrigatoria, 4, 4).
 disciplina(teoria_grafos, obrigatoria, 4, 4).
 disciplina(topicos_avancados_arquitetura_computadores, obrigatoria, 4, 4).
 
-% 5° Período
+% 5º período sugerido.
 disciplina(engenharia_software_I, obrigatoria, 4, 5).
 disciplina(estatistica, obrigatoria, 4, 5).
 disciplina(inteligencia_artificial, obrigatoria, 4, 5).
@@ -51,7 +54,7 @@ disciplina(redes_computadores_I, obrigatoria, 4, 5).
 disciplina(sistemas_operacionais, obrigatoria, 4, 5).
 disciplina(eletiva_I, eletiva, 4, 5).
 
-% 6° Período
+% 6º período sugerido.
 disciplina(direito_legislacao, obrigatoria, 2, 6).
 disciplina(engenharia_software_II, obrigatoria, 4, 6).
 disciplina(inteligencia_computacional, obrigatoria, 4, 6).
@@ -61,7 +64,7 @@ disciplina(seminarios_informatica, obrigatoria, 2, 6).
 disciplina(sistemas_concorrentes, obrigatoria, 4, 6).
 disciplina(eletiva_II, eletiva, 4, 6).
 
-% 7° Período
+% 7º período sugerido.
 disciplina(avaliacao_desempenho_sistemas, obrigatoria, 4, 7).
 disciplina(complexidade_algoritmos, obrigatoria, 4, 7).
 disciplina(interacao_humano_computador, obrigatoria, 4, 7).
@@ -72,7 +75,7 @@ disciplina(eletiva_III, eletiva, 2, 7).
 disciplina(sistemas_distribuidos, obrigatoria, 4, 7).
 disciplina(atividades_complementares_I, obrigatoria, 0, 7).
 
-% 8° Período
+% 8º período sugerido.
 disciplina(arquitetura_sistemas_distribuidos, obrigatoria, 4, 8).
 disciplina(computacao_grafica, obrigatoria, 4, 8).
 disciplina(economia_administracao, obrigatoria, 2, 8).
@@ -85,17 +88,18 @@ disciplina(atividades_complementares_II, obrigatoria, 0, 8).
 disciplina(leitura_escrita_textos_tecnicos_cientificos, obrigatoria, 4, 8).
 
 
-% PRE-REQUISITOS
-% prerequisito(Disciplina, PreRequisito).
+% Pré-requisitos diretos: prerequisito(Disciplina, PreRequisito).
+% A disciplina do primeiro argumento exige aprovação prévia na do segundo.
+% Vários fatos para uma disciplina representam requisitos cumulativos.
 
-% Profundidade 5
+% Cadeia de cinco arestas, da complexidade de algoritmos à programação inicial.
 prerequisito(complexidade_algoritmos, teoria_grafos).
 prerequisito(teoria_grafos, estruturas_dados).
 prerequisito(estruturas_dados, programacao_orientada_objetos).
 prerequisito(programacao_orientada_objetos, programacao_imperativa).
 prerequisito(programacao_imperativa, algoritmos_programacao).
 
-% Profundidade 6
+% Cadeia de seis arestas, dos sistemas distribuídos aos fundamentos elétricos.
 prerequisito(arquitetura_sistemas_distribuidos, sistemas_distribuidos).
 prerequisito(sistemas_distribuidos, sistemas_concorrentes).
 prerequisito(sistemas_concorrentes, sistemas_operacionais).
@@ -103,18 +107,18 @@ prerequisito(sistemas_operacionais, arquitetura_organizacao_computadores).
 prerequisito(arquitetura_organizacao_computadores, sistemas_digitais).
 prerequisito(sistemas_digitais, fundamentos_eletricidade_optica).
 
-% Profundidade 4
+% Cadeia de quatro arestas para a conclusão do projeto final.
 prerequisito(projeto_final_II, projeto_final_I).
 prerequisito(projeto_final_I, engenharia_software_II).
 prerequisito(engenharia_software_II, engenharia_software_I).
 prerequisito(engenharia_software_I, modelagem_sistemas_computacionais).
 
-% Profundidade 3
+% Cadeia de três arestas para processamento de imagens.
 prerequisito(processamento_imagens, estatistica).
 prerequisito(estatistica, calculo_I).
 prerequisito(calculo_I, introducao_calculo).
 
-% Dependencias adicionais do modelo didatico, incluindo multiplos pre-requisitos.
+% Dependências adicionais do modelo didático, incluindo múltiplos pré-requisitos.
 prerequisito(arquitetura_banco_dados, banco_dados).
 prerequisito(redes_computadores_II, redes_computadores_I).
 prerequisito(inteligencia_computacional, inteligencia_artificial).
@@ -124,16 +128,18 @@ prerequisito(sistemas_distribuidos, redes_computadores_II).
 prerequisito(seguranca_auditoria_sistemas, redes_computadores_II).
 prerequisito(seguranca_auditoria_sistemas, sistemas_operacionais).
 
-% BANCO DE ALUNOS
-% aluno(Nome, Semestre_atual, Status).
+% Cadastro: aluno(Identificador, SemestreAtual, Status).
+% Status regular permite matrícula; trancado mantém consultas de histórico.
+% O cadastro identifica também alunos sem fatos de aprovação.
 aluno(carla, 5, regular).
 aluno(bruno, 6, regular).
 aluno(ana, 6, regular).
-aluno(uriel, 3, trancado). % Sem historico; matricula bloqueada.
-aluno(diego, 1, regular). % Sem historico; trilha do zero ate a formatura.
+aluno(uriel, 3, trancado). % Sem histórico; matrícula bloqueada.
+aluno(diego, 1, regular). % Sem histórico; planeja todas as obrigatórias.
 
-% HISTÓRICO DE MATÉRIAS CURSADAS. ESTRUTURA:  cursou(Aluno, Disciplina) 
-% ANA: adiantada
+% Histórico: cursou(Aluno, Disciplina) significa conclusão com aprovação.
+% Os fatos não registram notas, reprovações nem a ordem das aprovações.
+% Ana: sem obrigatórias anteriores pendentes e com aprovações adiantadas.
 cursou(ana, algoritmos_programacao).
 cursou(ana, banco_dados).
 cursou(ana, fundamentos_eletricidade_optica).
@@ -181,7 +187,7 @@ cursou(ana, avaliacao_desempenho_sistemas).
 cursou(ana, complexidade_algoritmos).
 cursou(ana, interacao_humano_computador).
 
-% BRUNO: regular
+% Bruno: no ritmo do sexto período, com as obrigatórias anteriores concluídas.
 cursou(bruno, algoritmos_programacao).
 cursou(bruno, banco_dados).
 cursou(bruno, fundamentos_eletricidade_optica).
@@ -219,7 +225,7 @@ cursou(bruno, redes_computadores_I).
 cursou(bruno, sistemas_operacionais).
 cursou(bruno, eletiva_I).
 
-% CARLA: atrasada
+% Carla: atrasada, pois ainda tem obrigatórias anteriores ao quinto período.
 cursou(carla, algoritmos_programacao).
 cursou(carla, banco_dados).
 cursou(carla, fundamentos_eletricidade_optica).
