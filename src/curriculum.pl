@@ -46,7 +46,7 @@ disciplina(topicos_avancados_arquitetura_computadores, obrigatoria, 4, 4).
 disciplina(engenharia_software_I, obrigatoria, 4, 5).
 disciplina(estatistica, obrigatoria, 4, 5).
 disciplina(inteligencia_artificial, obrigatoria, 4, 5).
-disciplina(programacao_funcinal, obrigatoria, 4, 5).
+disciplina(programacao_funcional, obrigatoria, 4, 5).
 disciplina(redes_computadores_I, obrigatoria, 4, 5).
 disciplina(sistemas_operacionais, obrigatoria, 4, 5).
 disciplina(eletiva_I, eletiva, 4, 5).
@@ -166,7 +166,7 @@ cursou(ana, topicos_avancados_arquitetura_computadores).
 cursou(ana, engenharia_software_I).
 cursou(ana, estatistica).
 cursou(ana, inteligencia_artificial).
-cursou(ana, programacao_funcinal).
+cursou(ana, programacao_funcional).
 cursou(ana, redes_computadores_I).
 cursou(ana, sistemas_operacionais).
 cursou(ana, eletiva_I).
@@ -214,7 +214,7 @@ cursou(bruno, topicos_avancados_arquitetura_computadores).
 cursou(bruno, engenharia_software_I).
 cursou(bruno, estatistica).
 cursou(bruno, inteligencia_artificial).
-cursou(bruno, programacao_funcinal).
+cursou(bruno, programacao_funcional).
 cursou(bruno, redes_computadores_I).
 cursou(bruno, sistemas_operacionais).
 cursou(bruno, eletiva_I).

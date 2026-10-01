@@ -40,7 +40,7 @@ cursou(eletiva_teste, topicos_avancados_arquitetura_computadores).
 cursou(eletiva_teste, engenharia_software_I).
 cursou(eletiva_teste, estatistica).
 cursou(eletiva_teste, inteligencia_artificial).
-cursou(eletiva_teste, programacao_funcinal).
+cursou(eletiva_teste, programacao_funcional).
 cursou(eletiva_teste, redes_computadores_I).
 cursou(eletiva_teste, sistemas_operacionais).
 cursou(eletiva_teste, direito_legislacao).

@@ -37,7 +37,7 @@ cursou(formado_teste, topicos_avancados_arquitetura_computadores).
 cursou(formado_teste, engenharia_software_I).
 cursou(formado_teste, estatistica).
 cursou(formado_teste, inteligencia_artificial).
-cursou(formado_teste, programacao_funcinal).
+cursou(formado_teste, programacao_funcional).
 cursou(formado_teste, redes_computadores_I).
 cursou(formado_teste, sistemas_operacionais).
 cursou(formado_teste, direito_legislacao).
@@ -97,7 +97,7 @@ cursou(concluinte_teste, topicos_avancados_arquitetura_computadores).
 cursou(concluinte_teste, engenharia_software_I).
 cursou(concluinte_teste, estatistica).
 cursou(concluinte_teste, inteligencia_artificial).
-cursou(concluinte_teste, programacao_funcinal).
+cursou(concluinte_teste, programacao_funcional).
 cursou(concluinte_teste, redes_computadores_I).
 cursou(concluinte_teste, sistemas_operacionais).
 cursou(concluinte_teste, direito_legislacao).
