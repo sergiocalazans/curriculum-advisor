@@ -1,10 +1,12 @@
-% Fixtures estaticas: executar esta bateria em processo separado.
+% Bateria isolada: conclusão, componentes de zero crédito e enumeração completa.
+% Os históricos adicionais são estáticos; execute em processo separado.
 :- use_module(library(plunit)).
 :- ensure_loaded('../src/main.pl').
 :- multifile aluno/3, cursou/2.
 
 aluno(concluinte_teste, 8, regular).
 aluno(formado_teste, 8, regular).
+% Formado: todas as obrigatórias concluídas, sem necessidade de cursar as eletivas.
 cursou(formado_teste, algoritmos_programacao).
 cursou(formado_teste, banco_dados).
 cursou(formado_teste, fundamentos_eletricidade_optica).
@@ -65,6 +67,7 @@ cursou(formado_teste, seguranca_auditoria_sistemas).
 cursou(formado_teste, atividades_complementares_II).
 cursou(formado_teste, leitura_escrita_textos_tecnicos_cientificos).
 
+% Concluinte: faltam apenas as duas atividades complementares de zero crédito.
 cursou(concluinte_teste, algoritmos_programacao).
 cursou(concluinte_teste, banco_dados).
 cursou(concluinte_teste, fundamentos_eletricidade_optica).
@@ -123,15 +126,19 @@ cursou(concluinte_teste, projeto_final_II).
 cursou(concluinte_teste, seguranca_auditoria_sistemas).
 cursou(concluinte_teste, leitura_escrita_textos_tecnicos_cientificos).
 
-% Aprovacao repetida: a soma deve continuar contando a disciplina uma unica vez.
+% Aprovação repetida: o histórico normalizado deve contar a disciplina uma única vez.
 cursou(formado_teste, banco_dados).
 
+% Concluir todas as obrigatórias permite trilha vazia e limite de zero semestres.
 :- begin_tests(finais).
 test(formado_trilha_vazia, true(T == [])) :- once(trilha_valida(formado_teste, 4, T)).
 test(formado_zero_semestres, true(T == [])) :- once(trilha_valida(formado_teste, 4, 0, T)).
 test(formado_pendentes_creditos_sem_duplicatas) :- disciplinas_pendentes(formado_teste, []), creditos_cursados(formado_teste, 210).
+% Zero crédito não significa conclusão automática: os componentes entram na trilha.
 test(creditos_zero_no_semestre, true(T == [[atividades_complementares_I,atividades_complementares_II]])) :-
     once(trilha_valida(concluinte_teste, 4, T)).
+% Há três planos: juntas, primeira antes da segunda ou segunda antes da primeira.
+% Esse cenário pequeno permite esgotar findall/3 e bagof/3 sem explosão combinatória.
 test(findall_enumera_todas, true(N == 3)) :- findall(T, trilha_valida(concluinte_teste, 4, T), Ts), length(Ts, N).
 test(bagof_enumera_todas, true(N == 3)) :- bagof(T, trilha_valida(concluinte_teste, 4, T), Ts), length(Ts, N).
 test(sem_repeticao, true(N == 3)) :- findall(T, trilha_valida(concluinte_teste, 4, T), Ts), sort(Ts, Unicas), length(Unicas, N).
