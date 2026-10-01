@@ -1,11 +1,15 @@
-% Executar em processo separado: esta fixture acrescenta um ciclo estatico de proposito.
+% Bateria isolada: acrescenta um ciclo estático proposital à base normal.
+% Execute em processo separado para preservar as outras baterias e a demonstração.
 :- use_module(library(plunit)).
 :- use_module(library(time)).
 :- ensure_loaded('../src/main.pl').
 :- multifile prerequisito/2.
 
+% A base já contém a aresta inversa; esta dependência fecha um ciclo de duas arestas.
 prerequisito(algoritmos_programacao, programacao_imperativa).
 
+% Confere os dois vértices do ciclo, a terminação e a rejeição pelo planejador.
+% O limite de tempo transforma uma possível recursão infinita em falha do teste.
 :- begin_tests(ciclo).
 test(detecta_origem) :- existe_ciclo(algoritmos_programacao).
 test(detecta_outro_vertice) :- existe_ciclo(programacao_imperativa).
