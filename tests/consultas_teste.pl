@@ -1,10 +1,14 @@
+% Bateria principal: requisitos das três camadas sobre a base normal.
+% plunit interpreta true/1 como resultado esperado e [fail] como falha esperada.
 :- use_module(library(plunit)).
 :- use_module(library(time)).
 :- ensure_loaded('../src/main.pl').
 
+% Camada 1: tamanho mínimo, perfis, integridade dos fatos e consultas por semestre.
 :- begin_tests(curriculum).
 
 test(minimo_disciplinas) :- findall(D, disciplina(D, _, _, _), Ds), sort(Ds, Unicos), length(Unicos, N), N >= 20.
+% A quantificação com ^ evita que setof/3 agrupe por disciplina, tipo e créditos.
 test(minimo_semestres) :- setof(S, D^T^C^disciplina(D, T, C, S), Ss), length(Ss, N), N >= 6.
 test(minimo_eletivas) :- setof(D, C^S^disciplina(D, eletiva, C, S), Ds), length(Ds, N), N >= 3.
 test(tres_perfis) :- situacao_aluno(ana, adiantado), situacao_aluno(bruno, no_ritmo), situacao_aluno(carla, atrasado).
@@ -17,6 +21,7 @@ test(historicos_coerentes) :- forall(cursou(A, D), prerequisitos_ok(A, D)).
 test(multiplos_prerequisitos) :- findall(R, prerequisito(sistemas_distribuidos, R), Rs), length(Rs, 2).
 
 :- end_tests(curriculum).
+% Camada 2: diferenças entre perfis, pré-requisitos e bloqueio de já cursadas.
 :- begin_tests(elegibilidade).
 
 test(liberadas_diferentes) :- disciplinas_liberadas(ana, A), disciplinas_liberadas(bruno, B), disciplinas_liberadas(carla, C), A \== B, B \== C.
@@ -33,6 +38,7 @@ test(bloqueia_prerequisito, [fail]) :- pode_cursar(carla, projeto_final_II).
 test(multiplos_prerequisitos_satisfeitos) :- once(pode_cursar(ana, linguagens_formais_compiladores)).
 test(multiplos_prerequisitos_incompletos, [fail]) :- pode_cursar(diego, linguagens_formais_compiladores).
 test(sem_prerequisito) :- prerequisitos_ok(diego, banco_dados), pode_cursar(diego, banco_dados).
+% Valores de referência da base; trancamento preserva créditos e pendências.
 test(creditos_ana, true(C == 176)) :- creditos_cursados(ana, C).
 test(creditos_bruno, true(C == 140)) :- creditos_cursados(bruno, C).
 test(creditos_carla, true(C == 96)) :- creditos_cursados(carla, C).
@@ -40,6 +46,7 @@ test(creditos_zero, true(C == 0)) :- creditos_cursados(uriel, C).
 test(trancado_sem_liberadas, true(Ds == [])) :- disciplinas_liberadas(uriel, Ds).
 test(trancado_com_pendentes) :- disciplinas_pendentes(uriel, Ds), Ds = [_|_].
 test(resultados_ordenados) :- disciplinas_liberadas(carla, A), disciplinas_pendentes(carla, B), sort(A, A), sort(B, B).
+% Identidades inválidas devem falhar, enquanto consultas com variáveis enumeram.
 test(aluno_inexistente_liberadas, [fail]) :- disciplinas_liberadas(inexistente, _).
 test(aluno_inexistente_pendentes, [fail]) :- disciplinas_pendentes(inexistente, _).
 test(aluno_inexistente_creditos, [fail]) :- creditos_cursados(inexistente, _).
@@ -53,12 +60,15 @@ test(situacao_inexistente, [fail]) :- situacao_aluno(inexistente, _).
 
 :- end_tests(elegibilidade).
 
-% Validador independente da busca: reconstroi o historico semestre por semestre.
+% Valida o resultado sem chamar os auxiliares de seleção do planejador.
+% Reconstrói o histórico e exige a conclusão de todas as obrigatórias pendentes.
 verificar_trilha(Aluno, MaxCreditos, Trilha) :-
     length(Trilha, N), N =< 12, historico_aluno(Aluno, Historico),
     verificar_semestres(Trilha, Historico, MaxCreditos, Final),
     disciplinas_pendentes(Aluno, Pendentes), forall(member(D, Pendentes), memberchk(D, Final)).
 
+% Verifica semestres não vazios e ordenados, sem duplicatas e dentro dos créditos.
+% Pré-requisitos precisam estar no histórico anterior, sem repetição de aprovação.
 verificar_semestres([], Historico, _, Historico).
 verificar_semestres([Semestre|Trilha], Historico, MaxCreditos, Final) :-
     Semestre = [_|_], sort(Semestre, Semestre),
@@ -66,6 +76,7 @@ verificar_semestres([Semestre|Trilha], Historico, MaxCreditos, Final) :-
     forall(member(D, Semestre), (\+ memberchk(D, Historico), forall(prerequisito(D, R), memberchk(R, Historico)))),
     append(Semestre, Historico, NovoHistorico), verificar_semestres(Trilha, NovoHistorico, MaxCreditos, Final).
 
+% Camada 3: caminhos transitivos, conclusão e alternativas válidas de planejamento.
 :- begin_tests(trilhas).
 
 test(direto) :- prerequisito_transitivo(programacao_imperativa, algoritmos_programacao).
@@ -76,16 +87,19 @@ test(transitivo_inexistente, [fail]) :- prerequisito_transitivo(inexistente, _).
 test(ancestral_inexistente, [fail]) :- prerequisito_transitivo(_, inexistente).
 test(transitivo_enumera_sem_duplicatas) :-
     findall(A, prerequisito_transitivo(arquitetura_sistemas_distribuidos, A), As), sort(As, Unicos), same_length(As, Unicos), length(As, 8).
+% once/1 limita cada consulta à primeira trilha; o validador confere o resultado.
 test(trilha_completa_do_zero) :- once(trilha_valida(diego, 28, T)), verificar_trilha(diego, 28, T).
 test(trilha_ana) :- once(trilha_valida(ana, 28, T)), verificar_trilha(ana, 28, T).
 test(trilha_bruno) :- once(trilha_valida(bruno, 28, T)), verificar_trilha(bruno, 28, T).
 test(trilha_carla) :- once(trilha_valida(carla, 28, T)), verificar_trilha(carla, 28, T).
 test(multiplas_trilhas) :-
     once(trilhas_limitadas(ana, 28, 3, Ts)), length(Ts, 3), sort(Ts, Unicas), length(Unicas, 3), forall(member(T, Ts), verificar_trilha(ana, 28, T)).
+% A simulação de semestres deve preservar os fatos originais de cursou/2.
 test(nao_muda_historico) :-
     findall(A-D, cursou(A, D), Antes), once(trilhas_limitadas(ana, 28, 3, _)), findall(A-D, cursou(A, D), Depois), Antes == Depois.
 test(sem_eletivas_desnecessarias) :-
     once(trilha_valida(diego, 28, T)), append(T, Ds), forall(member(D, Ds), disciplina(D, obrigatoria, _, _)).
+% Planos inviáveis e entradas inválidas devem falhar; o tempo limita a busca crítica.
 test(limite_semestres_impossivel, [fail]) :- trilha_valida(diego, 28, 1, _).
 test(cadeia_maior_que_limite, [fail]) :- call_with_time_limit(2, trilha_valida(diego, 1000, 6, _)).
 test(teto_doze, [fail]) :- trilha_valida(diego, 28, 13, _).
