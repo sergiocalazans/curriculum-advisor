@@ -22,6 +22,8 @@ Os fatos `aluno/3` identificam alunos mesmo quando não existe `cursou/2`. Perfi
 
 Os fatos continuam separados das regras. A declaração `multifile` apenas permite acrescentar fixtures estáticas em outros arquivos; não representa uma regra de domínio e não torna os predicados dinâmicos.
 
+Os comentários dos arquivos Prolog explicam o propósito dos predicados, as premissas dos auxiliares e os cenários de teste. Blocos de fatos são comentados em conjunto. Os identificadores permanecem sem acentos, enquanto os comentários em português usam a ortografia convencional em UTF-8.
+
 ## 2. Elegibilidade e negação por falha
 
 `prerequisitos_ok/2` primeiro enumera um aluno e uma disciplina cadastrados. Depois, `forall(prerequisito(D, R), cursou(A, R))` exige todos os pré-requisitos diretos. Uma referência a requisito inexistente não é filtrada silenciosamente: a verificação falha por não existir aprovação correspondente.
@@ -57,6 +59,7 @@ A aresta final é verificada antes da restrição de visitados. Isso permite enc
 `base_consistente/0` verifica identificadores únicos, tipos, créditos não negativos, semestres positivos, alunos, referências de pré-requisito e histórico, e ausência de ciclos. O planejamento rejeita a base inconsistente antes de iniciar sua recursão. A base normal contém uma cadeia de seis arestas, por exemplo:
 
 ```prolog
+% Leitura ilustrativa: cada seta aponta da disciplina para seu pré-requisito.
 arquitetura_sistemas_distribuidos
   -> sistemas_distribuidos
   -> sistemas_concorrentes
