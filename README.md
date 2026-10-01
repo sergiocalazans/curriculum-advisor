@@ -38,6 +38,7 @@ curriculum-advisor/
 Abra o terminal na pasta `curriculum-advisor` extraída do ZIP:
 
 ```bash
+# Executa demo/0 e encerra o interpretador ao terminar.
 swipl -q -s src/main.pl -g demo -t halt
 ```
 
@@ -46,6 +47,7 @@ O comando mostra a base do primeiro semestre, consultas de Carla, pré-requisito
 Para usar o interpretador interativo:
 
 ```bash
+# Carrega o sistema e mantém o interpretador aberto para consultas.
 swipl -q -s src/main.pl
 ```
 
@@ -58,11 +60,11 @@ Também é possível abrir o SWI-Prolog, selecionar **File > Consult** e escolhe
 findall(D, disciplina(D, _, _, 1), Disciplinas).
 
 % Camada 2: elegibilidade, pendências e créditos.
-prerequisitos_ok(ana, linguagens_formais_compiladores).
+prerequisitos_ok(ana, linguagens_formais_compiladores). % true: ambos os requisitos concluídos.
 pode_cursar(carla, projeto_final_II).         % false: pré-requisito pendente.
 pode_cursar(ana, algoritmos_programacao).    % false: já cursada.
-disciplinas_liberadas(carla, Lista).
-disciplinas_pendentes(ana, Lista).
+disciplinas_liberadas(carla, Lista).         % Elegíveis, incluindo eletivas liberadas.
+disciplinas_pendentes(ana, Lista).           % Apenas obrigatórias não concluídas.
 creditos_cursados(ana, Total).               % Total = 176.
 creditos_cursados(bruno, Total).             % Total = 140.
 creditos_cursados(carla, Total).             % Total = 96.
@@ -75,7 +77,7 @@ prerequisito_transitivo(arquitetura_sistemas_distribuidos, fundamentos_eletricid
 existe_ciclo(_).                            % false na base normal.
 base_consistente.                          % true.
 
-% Uma solução: não enumera todas as possibilidades.
+% Primeira trilha válida; não há garantia de ser a mais curta.
 once(trilha_valida(diego, 28, Trilha)).
 
 % Até três soluções, coletadas sem enumerar todo o espaço.
@@ -85,8 +87,8 @@ trilhas_limitadas(ana, 28, 3, Trilhas).
 once(trilha_valida(carla, 28, 8, Trilha)).
 trilha_valida(diego, 28, 13, Trilha).        % false: ultrapassa o teto.
 
-demo.
-halt.
+demo.                                     % Demonstra as três camadas.
+halt.                                     % Encerra a sessão interativa.
 ```
 
 `trilha_valida/3` deixa alternativas disponíveis: após obter uma solução no interpretador, pressione `;` para solicitar a seguinte. Use `once/1` quando quiser apenas a primeira. O resultado é uma lista de semestres, sendo cada semestre uma lista de disciplinas.
@@ -98,6 +100,7 @@ O semestre sugerido orienta a ordem da busca; não representa uma restrição ob
 ## Executar todos os testes
 
 ```bash
+# Executa as cinco baterias em processos separados.
 swipl -q -s tests/executar_testes.pl
 ```
 
@@ -112,6 +115,7 @@ São **88 testes em cinco baterias**. Qualquer falha faz o executor encerrar com
 Para executar cada bateria individualmente:
 
 ```bash
+# Cada comando carrega uma bateria, executa os testes e encerra a sessão.
 swipl -q -s tests/consultas_teste.pl -g run_tests -t halt
 swipl -q -s tests/teste_ciclo.pl -g run_tests -t halt
 swipl -q -s tests/teste_finais.pl -g run_tests -t halt
@@ -128,10 +132,12 @@ O enunciado exige demonstrar múltiplas trilhas. A fixture `teste_finais.pl` con
 Inicie uma sessão separada:
 
 ```bash
+# Carrega a bateria dos alunos formado e concluinte em uma sessão separada.
 swipl -q -s tests/teste_finais.pl
 ```
 
 ```prolog
+% Nesse cenário há exatamente três trilhas, viáveis para enumeração completa.
 findall(T, trilha_valida(concluinte_teste, 4, T), Trilhas).
 bagof(T, trilha_valida(concluinte_teste, 4, T), Trilhas).
 ```
