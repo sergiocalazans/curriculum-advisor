@@ -4,7 +4,7 @@
 
 A base contém 63 disciplinas distintas, 59 obrigatórias e 4 eletivas, distribuídas em 8 semestres sugeridos. As relações de pré-requisito usam um fato `prerequisito/2` por par; uma disciplina pode exigir várias outras.
 
-O currículo parte do material já cadastrado pelo grupo. Acrescentamos relações didáticas coerentes para exercitar dependências múltiplas e corrigimos dois identificadores com erros de escrita. Não houve conferência com uma matriz curricular oficial. Em particular, semestre sugerido não implica disponibilidade da disciplina em determinado período nem equivale a uma regra de elegibilidade.
+O currículo parte do material já cadastrado pelo grupo. Acrescentamos relações didáticas coerentes para exercitar dependências múltiplas e normalizamos o identificador de Programação Funcional. Não houve conferência com uma matriz curricular oficial. Em particular, semestre sugerido não implica disponibilidade da disciplina em determinado período nem equivale a uma regra de elegibilidade.
 
 `atividades_complementares_I` e `atividades_complementares_II` representam dois componentes separados. Isso elimina a ambiguidade do identificador que aparecia duas vezes na versão original. Ambos têm zero créditos no modelo; a busca permite cursá-los e não depende de reduzir créditos para terminar.
 
@@ -124,7 +124,7 @@ Helpers de listas recebem listas finitas nas chamadas internas. Termos cíclicos
 - Semestre sugerido é informativo. Componentes com zero créditos podem aparecer antes dele se não tiverem dependências.
 - A checagem de consistência é refeita a cada chamada de planejamento. É simples e adequada ao tamanho desta base; não foi desenvolvido cache de grafos.
 - O sistema rejeita ciclos em qualquer região da base, mesmo que não afetem o aluno consultado. Essa decisão conservadora evita planejar sobre uma grade globalmente malformada.
-- O executor foi validado em Linux com SWI-Prolog 9.0.4. A execução no computador de apresentação continua sendo a verificação final do ambiente do grupo.
+- O executor foi validado em Windows com SWI-Prolog 10.0.2. A execução no computador de apresentação continua sendo a verificação final do ambiente do grupo.
 
 ## 9. Testes e isolamento
 

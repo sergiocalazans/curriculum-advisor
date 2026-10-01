@@ -5,7 +5,7 @@ Sistema de trilha de disciplinas em **SWI-Prolog**, para o PjBL 1 de Programaç�
 ## Requisitos
 
 - SWI-Prolog instalado, com o comando `swipl` disponível no terminal.
-- Validado em SWI-Prolog **9.0.4**, em Linux.
+- Validado em SWI-Prolog **10.0.2**, em Windows.
 - Não exige instalação de bibliotecas externas, pacotes Prolog adicionais, Python ou serviços.
 - Os arquivos devem permanecer juntos e em UTF-8.
 
@@ -29,10 +29,6 @@ curriculum-advisor/
     executar_testes.pl        Executor das cinco baterias em processos separados
   docs/
     decisoes.md               Modelagem, algoritmo, agregação e limitações
-    alteracoes.md             Arquivos alterados e relação com as issues
-    checklist_entrega.md      Correspondência com o enunciado
-    guia_apresentacao.md      Roteiro de demonstração e perguntas para revisão
-    validacao.txt             Registro da execução verificada
   LICENSE
   README.md
 ```
@@ -152,8 +148,8 @@ Para os alunos da base completa, prefira `trilhas_limitadas/4`. Embora haja limi
 
 ## Entrega e apresentação
 
-O código atende às três camadas e possui demonstração, testes de ciclo separados, tratamento de consultas inexistentes e documentação de decisões. Consulte `docs/checklist_entrega.md` para relacionar cada requisito com sua implementação.
+O código atende às três camadas e possui demonstração, testes de ciclo separados, tratamento de consultas inexistentes e documentação de decisões.
 
-Antes de entregar, execute os dois comandos principais no computador do grupo: demonstração e testes. A validação registrada foi feita em Linux; o executor foi escrito com as APIs portáveis do SWI-Prolog, mas não foi executado em Windows neste ambiente.
+Antes de entregar, execute os dois comandos principais no computador do grupo: demonstração e testes. A validação desta revisão foi feita em Windows com SWI-Prolog 10.0.2.
 
-Todos os integrantes devem revisar `docs/guia_apresentacao.md` e conseguir explicar o código. O modelo curricular parte da base enviada pelo grupo; as relações são didáticas e não representam uma validação oficial da matriz ou das normas de matrícula da instituição.
+Todos os integrantes devem conseguir explicar o código. O modelo curricular parte da base enviada pelo grupo; as relações são didáticas e não representam uma validação oficial da matriz ou das normas de matrícula da instituição.
