@@ -1,3 +1,6 @@
+% Camada 1: somente fatos; multifile permite fixtures estaticas em arquivos de teste separados.
+:- multifile disciplina/4, prerequisito/2, aluno/3, cursou/2.
+
 % DISCIPLINAS DO CURRÍCULO DE CIÊNCIA DA COMPUTAÇÃO
 
 % Estrutura: disciplina(Nome, Tipo, Creditos, Semestre).
@@ -34,14 +37,14 @@ disciplina(algebra_linear, obrigatoria, 4, 4).
 disciplina(arquitetura_banco_dados, obrigatoria, 4, 4).
 disciplina(computacao_sociedade, obrigatoria, 2, 4).
 disciplina(etica, obrigatoria, 2, 4).
-disciplina(modelagem_sistemas_computacionas, obrigatoria, 4, 4).
+disciplina(modelagem_sistemas_computacionais, obrigatoria, 4, 4).
 disciplina(programacao_logica, obrigatoria, 4, 4).
 disciplina(teoria_grafos, obrigatoria, 4, 4).
 disciplina(topicos_avancados_arquitetura_computadores, obrigatoria, 4, 4).
 
 % 5° Período
 disciplina(engenharia_software_I, obrigatoria, 4, 5).
-disciplina(estatisca, obrigatoria, 4, 5).
+disciplina(estatistica, obrigatoria, 4, 5).
 disciplina(inteligencia_artificial, obrigatoria, 4, 5).
 disciplina(programacao_funcinal, obrigatoria, 4, 5).
 disciplina(redes_computadores_I, obrigatoria, 4, 5).
@@ -104,19 +107,30 @@ prerequisito(sistemas_digitais, fundamentos_eletricidade_optica).
 prerequisito(projeto_final_II, projeto_final_I).
 prerequisito(projeto_final_I, engenharia_software_II).
 prerequisito(engenharia_software_II, engenharia_software_I).
-prerequisito(engenharia_software_I, modelagem_sistemas_computacionas).
+prerequisito(engenharia_software_I, modelagem_sistemas_computacionais).
 
 % Profundidade 3
-prerequisito(processamento_imagens, estatisca).
-prerequisito(estatisca, calculo_I).
+prerequisito(processamento_imagens, estatistica).
+prerequisito(estatistica, calculo_I).
 prerequisito(calculo_I, introducao_calculo).
+
+% Dependencias adicionais do modelo didatico, incluindo multiplos pre-requisitos.
+prerequisito(arquitetura_banco_dados, banco_dados).
+prerequisito(redes_computadores_II, redes_computadores_I).
+prerequisito(inteligencia_computacional, inteligencia_artificial).
+prerequisito(linguagens_formais_compiladores, estruturas_dados).
+prerequisito(linguagens_formais_compiladores, matematica_discreta).
+prerequisito(sistemas_distribuidos, redes_computadores_II).
+prerequisito(seguranca_auditoria_sistemas, redes_computadores_II).
+prerequisito(seguranca_auditoria_sistemas, sistemas_operacionais).
 
 % BANCO DE ALUNOS
 % aluno(Nome, Semestre_atual, Status).
 aluno(carla, 5, regular).
 aluno(bruno, 6, regular).
 aluno(ana, 6, regular).
-aluno(uriel, 3, trancado). % sem historirco, para testes
+aluno(uriel, 3, trancado). % Sem historico; matricula bloqueada.
+aluno(diego, 1, regular). % Sem historico; trilha do zero ate a formatura.
 
 % HISTÓRICO DE MATÉRIAS CURSADAS. ESTRUTURA:  cursou(Aluno, Disciplina) 
 % ANA: adiantada
@@ -145,12 +159,12 @@ cursou(ana, algebra_linear).
 cursou(ana, arquitetura_banco_dados).
 cursou(ana, computacao_sociedade).
 cursou(ana, etica).
-cursou(ana, modelagem_sistemas_computacionas).
+cursou(ana, modelagem_sistemas_computacionais).
 cursou(ana, programacao_logica).
 cursou(ana, teoria_grafos).
 cursou(ana, topicos_avancados_arquitetura_computadores).
 cursou(ana, engenharia_software_I).
-cursou(ana, estatisca).
+cursou(ana, estatistica).
 cursou(ana, inteligencia_artificial).
 cursou(ana, programacao_funcinal).
 cursou(ana, redes_computadores_I).
@@ -193,12 +207,12 @@ cursou(bruno, algebra_linear).
 cursou(bruno, arquitetura_banco_dados).
 cursou(bruno, computacao_sociedade).
 cursou(bruno, etica).
-cursou(bruno, modelagem_sistemas_computacionas).
+cursou(bruno, modelagem_sistemas_computacionais).
 cursou(bruno, programacao_logica).
 cursou(bruno, teoria_grafos).
 cursou(bruno, topicos_avancados_arquitetura_computadores).
 cursou(bruno, engenharia_software_I).
-cursou(bruno, estatisca).
+cursou(bruno, estatistica).
 cursou(bruno, inteligencia_artificial).
 cursou(bruno, programacao_funcinal).
 cursou(bruno, redes_computadores_I).
