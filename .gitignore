@@ -1,15 +1,16 @@
+# Mantém artefatos gerados e configurações locais fora do repositório.
 # ==========================================
 # SWI-Prolog
 # ==========================================
 
-# Arquivos compilados (Quick Load Files)
+# Arquivos compilados do SWI-Prolog (Quick Load Files)
 *.qlf
 
-# Arquivos de log e depuracao
+# Arquivos de log e depuração
 *.log
 *.trace
 
-# Arquivos temporarios e backups
+# Arquivos temporários, cópias de segurança e resíduos de edição
 *.tmp
 *.temp
 *.bak
@@ -26,11 +27,11 @@
 Thumbs.db
 Desktop.ini
 
-# Linux e macOS
+# Metadados do Finder no macOS
 .DS_Store
 
 # ==========================================
-# Arquivos locais de editores
+# Configurações locais do Visual Studio Code e de IDEs JetBrains
 # ==========================================
 
 .vscode/
